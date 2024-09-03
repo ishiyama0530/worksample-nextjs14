@@ -10,7 +10,7 @@ const getThread = async (id: string) => {
 
     return thread;
   } catch (e) {
-    console.log(e);
+    console.error(JSON.stringify(e, null, 2));
     return null;
   }
 };
