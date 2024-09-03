@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "npx prisma generate",
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type": "tsc --noEmit",
+    "check": "biome check --write ./src",
+    "verify-all": "npm run type && npm run check"
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
