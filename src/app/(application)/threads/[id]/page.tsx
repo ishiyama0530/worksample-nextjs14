@@ -4,7 +4,15 @@ import { notFound } from "next/navigation";
 
 export type ThreadDetailPageProps = { params: { id: string } };
 
-const getThread = async (id: string) => prisma.thread.findFirst();
+const getThread = async (id: string) => {
+  try {
+    const thread = await prisma.thread.findFirst();
+
+    return thread;
+  } catch (e) {
+    return null;
+  }
+};
 
 export default async function ThreadDetailPage({
   params: { id },
