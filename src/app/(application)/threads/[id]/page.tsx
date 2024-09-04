@@ -1,31 +1,19 @@
-import { ThreadContent } from "@/components/thread-content";
-import { PrismaClient } from "@prisma/client";
+import { ThreadDetailPresentation } from "@/app/(application)/threads/[id]/_presentation";
+import prisma from "@/lib/prisma";
+import { notFound } from "next/navigation";
 
 export type ThreadDetailPageProps = { params: { id: string } };
 
-const getThread = async (id: string) => {
-  try {
-    const prisma = new PrismaClient();
-    const thread = await prisma.thread.findFirst();
-
-    return thread;
-  } catch (e) {
-    return null;
-  }
-};
+const getThread = async (id: string) => prisma.thread.findFirst();
 
 export default async function ThreadDetailPage({
   params: { id },
 }: ThreadDetailPageProps) {
   const thread = await getThread(id);
-  return (
-    <>
-      <ul className="text-center p-8">
-        <li>{thread?.id}</li>
-        <li>{thread?.title}</li>
-        <li>{thread?.description}</li>
-      </ul>
-      <ThreadContent />;
-    </>
-  );
+
+  if (!thread) {
+    return notFound();
+  }
+
+  return <ThreadDetailPresentation thread={thread} />;
 }

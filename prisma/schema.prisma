@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,9 +12,21 @@ datasource db {
 }
 
 model Thread {
-  id          String   @id
+  id          String   @id @db.Char(26)
   title       String
   description String
+  keyPhrases  String
+  password    String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt()
+  updatedAt   DateTime @updatedAt
+  posts       Post[]
+}
+
+model Post {
+  id        String   @id @db.Char(26)
+  content   String
+  createdAt DateTime @default(now())
+  ipAddress String
+  thread    Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  threadId  String
 }
