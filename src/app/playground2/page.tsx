@@ -30,7 +30,7 @@ export default function PlaygroundPage2() {
   const [lastResult, action] = useFormState(execute, {
     initialValue: {
       name: "samoyed",
-    },
+    } satisfies z.infer<typeof schema>, // もっと良い方法あるかな??
   });
 
   const [form, fields] = useForm({
