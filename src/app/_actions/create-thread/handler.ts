@@ -1,51 +1,37 @@
 "use server";
 
-import {
-  type CreateThreadData,
-  createThreadScheme,
-} from "@/app/_actions/create-thread/scheme";
-import { type FieldErrors, safeParse } from "@/lib/validation";
+import { createThreadScheme } from "@/app/_actions/create-thread/scheme";
+import { getIpAddress } from "@/lib/ip";
+import prisma from "@/lib/prisma";
+import { parseWithZod } from "@conform-to/zod";
+import { redirect } from "next/navigation";
+import { ulid } from "ulid";
 
-export type FormState = CreateThreadData & {
-  // title: string;
-  // description: string;
-  // password: string;
-  // keyPhrases: string;
-  // post: {
-  //   content: string;
-  // };
-};
+export async function createThread(_: unknown, formData: FormData) {
+  const submission = parseWithZod(formData, {
+    schema: createThreadScheme,
+  });
 
-export async function createThread(
-  prevState: FormState,
-  formData: FormData,
-): Promise<FormState & { errors?: FieldErrors }> {
-  const result = safeParse(createThreadScheme, formData);
-  if (!result.ok) {
-    return {
-      ...prevState,
-      errors: result.errors,
-    };
+  if (submission.status !== "success") {
+    return submission.reply();
   }
-  // return prisma.thread.create({
-  //   data: {
-  //     id: ulid(),
-  //     title,
-  //     description,
-  //     password,
-  //     keyPhrases,
-  //     posts: {
-  //       create: {
-  //         id: ulid(),
-  //         ipAddress: getIpAddress(),
-  //         content: post.content,
-  //       },
-  //     },
-  //   },
-  // });
 
-  // 2秒待つ
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await prisma.thread.create({
+    data: {
+      id: ulid(),
+      title: submission.value.title,
+      description: submission.value.description,
+      keyPhrases: "keyPhrases",
+      password: "password",
+      posts: {
+        create: {
+          id: ulid(),
+          content: submission.value.post,
+          ipAddress: getIpAddress(),
+        },
+      },
+    },
+  });
 
-  return { title: "bbb" };
+  redirect("/threads");
 }
