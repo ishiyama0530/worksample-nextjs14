@@ -5,8 +5,14 @@ import { createThread, createThreadSchema } from "@/app/_actions/createThread";
 import { FormButton } from "@/components/from-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "@conform-to/react";
+import {
+  getFormProps,
+  getInputProps,
+  getTextareaProps,
+  useForm,
+} from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
+import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
 export type ThreadCreateFormProps = {
@@ -14,6 +20,7 @@ export type ThreadCreateFormProps = {
 };
 
 export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [lastResult, action] = useFormState(createThread, {
     initialValue: {
       title: "",
@@ -26,40 +33,43 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: createThreadSchema });
     },
-    shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  useEffect(() => {
+    if (lastResult.status === "success") {
+      formRef.current?.reset();
+    }
+  }, [lastResult]);
 
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold mb-4">Create a New Thread</h2>
       <form
-        id={form.id}
-        onSubmit={form.onSubmit}
+        {...getFormProps(form)}
+        ref={formRef}
         action={action}
         className="grid gap-4"
-        noValidate
       >
         <Input
-          type="text"
+          {...getInputProps(fields.title, {
+            type: "text",
+          })}
           placeholder="Thread Title"
-          name="title"
-          defaultValue={fields.title.initialValue}
         />
         <p>{fields.title.errors}</p>
         <Input
-          type="text"
+          {...getInputProps(fields.description, {
+            type: "text",
+          })}
           placeholder="Thread Description"
-          name="description"
-          defaultValue={fields.description.initialValue}
         />
         <p>{fields.description.errors}</p>
         <Textarea
-          placeholder="First Post"
+          {...getTextareaProps(fields.post)}
           rows={4}
           className="field-sizing-content"
-          name="post"
-          defaultValue={fields.post.initialValue}
+          placeholder="First Post"
         />
         <p>{fields.post.errors}</p>
         <FormButton type="submit">Submit</FormButton>

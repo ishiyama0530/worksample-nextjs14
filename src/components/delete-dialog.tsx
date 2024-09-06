@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getRandomString } from "@/lib/random";
-import { useForm } from "@conform-to/react";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
@@ -51,6 +51,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
 
   useEffect(() => {
     if (open) {
+      // フォーム入力値のリセットとエラーのクリア
       setFormId(getRandomString());
     }
   }, [open]);
@@ -65,21 +66,15 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
             Enter your password to confirm the deletion of this item.
           </DialogDescription>
         </DialogHeader>
-        <form
-          id={form.id}
-          onSubmit={form.onSubmit}
-          action={action}
-          className="grid gap-4"
-          noValidate
-        >
+        <form {...getFormProps(form)} action={action} className="grid gap-4">
           <input type="hidden" name="id" value={threadId} />
           <div className="grid gap-4 py-4">
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input
-                id="password"
-                name="password"
-                type="password"
+                {...getInputProps(fields.password, {
+                  type: "text",
+                })}
                 placeholder="Enter your password"
               />
             </div>

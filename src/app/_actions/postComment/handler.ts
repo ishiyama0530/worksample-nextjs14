@@ -5,7 +5,6 @@ import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";
-import { redirect } from "next/navigation";
 import { ulid } from "ulid";
 
 export async function postComment(_: unknown, formData: FormData) {
@@ -27,5 +26,7 @@ export async function postComment(_: unknown, formData: FormData) {
   });
 
   revalidateTag(`thread-${submission.value.threadId}`);
-  redirect(`/threads/${submission.value.threadId}`);
+  return {
+    status: submission.status,
+  };
 }

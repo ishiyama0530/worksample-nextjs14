@@ -5,7 +5,6 @@ import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";
-import { redirect } from "next/navigation";
 import { ulid } from "ulid";
 
 export async function createThread(_: unknown, formData: FormData) {
@@ -35,5 +34,7 @@ export async function createThread(_: unknown, formData: FormData) {
   });
 
   revalidateTag("get-threads");
-  redirect("/threads");
+  return {
+    status: submission.status,
+  };
 }

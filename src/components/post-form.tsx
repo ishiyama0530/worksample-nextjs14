@@ -1,13 +1,17 @@
 "use client";
 
-import type { PostCommentData } from "@/app/_actions/postComment";
-import { postComment, postCommentSchema } from "@/app/_actions/postComment";
+import {
+  type PostCommentData,
+  postComment,
+  postCommentSchema,
+} from "@/app/_actions/postComment";
 import { FormButton } from "@/components/from-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "@conform-to/react";
+import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
+import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
 export type PostFormProps = {
@@ -16,6 +20,7 @@ export type PostFormProps = {
 };
 
 export function PostForm({ threadId, className }: PostFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [lastResult, action] = useFormState(postComment, {
     initialValue: {
       threadId,
@@ -27,9 +32,14 @@ export function PostForm({ threadId, className }: PostFormProps) {
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: postCommentSchema });
     },
-    shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  useEffect(() => {
+    if (lastResult.status === "success") {
+      formRef.current?.reset();
+    }
+  }, [lastResult]);
 
   return (
     <div className={className}>
@@ -39,22 +49,18 @@ export function PostForm({ threadId, className }: PostFormProps) {
         </CardHeader>
         <CardContent>
           <form
-            id={form.id}
-            onSubmit={form.onSubmit}
+            {...getFormProps(form)}
+            ref={formRef}
             action={action}
             className="grid gap-4"
-            noValidate
           >
             <input type="hidden" name="threadId" value={threadId} />
             <div className="grid gap-1">
               <Label htmlFor="message">Message</Label>
               <Textarea
-                id="message"
-                placeholder="Your message"
-                rows={4}
+                {...getTextareaProps(fields.content)}
                 className="field-sizing-content"
-                name="content"
-                defaultValue={fields.content.initialValue}
+                placeholder="Your message"
               />
               <p>{fields.content.errors}</p>
             </div>
