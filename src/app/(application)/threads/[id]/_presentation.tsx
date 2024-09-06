@@ -13,15 +13,19 @@ export const ThreadDetailPresentation: React.FC<
   ThreadDetailPresentationProps
 > = ({ thread, posts }) => {
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto px-4 md:px-6 py-8">
-      <ThreadDetailOverview
-        title={thread.title}
-        description={thread.description}
-        threadId={thread.id}
-      />
-      <PostList posts={posts} />
-      <Pagination className="mt-8" />
-      <PostForm className="mt-8" threadId={thread.id} />
+    <div className="flex flex-col min-h-[100dvh]">
+      <div className="flex-1 bg-muted py-12 md:py-20">
+        <div className="mx-auto container max-w-4xl px-4 md:px-6">
+          <ThreadDetailOverview
+            title={thread.title}
+            description={thread.description}
+            threadId={thread.id}
+          />
+          <PostList posts={posts} />
+          <Pagination className="mt-8" />
+          <PostForm className="mt-8" threadId={thread.id} />
+        </div>
+      </div>
     </div>
   );
 };

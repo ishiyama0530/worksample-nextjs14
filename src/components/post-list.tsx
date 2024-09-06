@@ -19,7 +19,7 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
                 <AvatarFallback>-</AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium">{post.ipAddress}</div>
+                <div className="font-medium">{`${post.id}_${post.ipAddress}`}</div>
                 <div className="text-xs text-muted-foreground">
                   {dayjs(post.createdAt).fromNow()}
                 </div>

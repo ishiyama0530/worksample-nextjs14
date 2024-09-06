@@ -18,7 +18,7 @@ export async function postComment(_: unknown, formData: FormData) {
 
   await prisma.post.create({
     data: {
-      id: ulid(),
+      id: ulid().toLowerCase(),
       content: submission.value.content,
       ipAddress: getIpAddress(),
       threadId: submission.value.threadId,

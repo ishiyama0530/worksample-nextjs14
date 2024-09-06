@@ -21,7 +21,11 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
       </div>
       <div className="self-end">
         <DeleteDialog threadId={threadId}>
-          <Button size="icon" variant="ghost" className="rounded-full">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="rounded-full hover:bg-white"
+          >
             <Trash className="h-4 w-4" />
           </Button>
         </DeleteDialog>

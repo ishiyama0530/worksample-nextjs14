@@ -18,14 +18,14 @@ export async function createThread(_: unknown, formData: FormData) {
 
   await prisma.thread.create({
     data: {
-      id: ulid(),
+      id: ulid().toLowerCase(),
       title: submission.value.title,
       description: submission.value.description,
       keyPhrases: "keyPhrases",
       password: "password",
       posts: {
         create: {
-          id: ulid(),
+          id: ulid().toLowerCase(),
           content: submission.value.post,
           ipAddress: getIpAddress(),
         },

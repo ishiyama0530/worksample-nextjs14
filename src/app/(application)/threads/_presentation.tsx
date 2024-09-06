@@ -11,7 +11,7 @@ export type ThreadsPresentationProps = {
 export function ThreadsPresentation({ threads }: ThreadsPresentationProps) {
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <div className="flex-1 bg-muted py-12 md:py-24 lg:py-32">
+      <div className="flex-1 bg-muted py-12 md:py-20">
         <div className="mx-auto container px-4 md:px-6">
           <ThreadOverview title="Threads" description="Threads description" />
           <ThreadList threads={threads} />

@@ -45,7 +45,6 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: deleteThreadSchema });
     },
-    shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
 
