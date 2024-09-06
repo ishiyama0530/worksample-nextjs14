@@ -73,7 +73,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
               <Label htmlFor="password">Password</Label>
               <Input
                 {...getInputProps(fields.password, {
-                  type: "text",
+                  type: "password",
                 })}
                 placeholder="Enter your password"
               />
