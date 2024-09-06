@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-6 min-h-[100dvh]">
+    <div className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-6 min-h-[100dvh] prose">
       <div className="space-y-8">
         <div>
           <h2 className="text-2xl font-bold">Contact</h2>

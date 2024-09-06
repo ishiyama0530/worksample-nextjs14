@@ -16,8 +16,8 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
   return (
     <div className="mb-6 flex justify-between">
       <div>
-        <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="text-muted-foreground">{description}</p>
+        <h1 className="text-3xl font-bold prose">{title}</h1>
+        <p className="text-muted-foreground prose">{description}</p>
       </div>
       <div className="self-end">
         <DeleteDialog threadId={threadId}>

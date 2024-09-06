@@ -1,9 +1,9 @@
 export default function AboutPage() {
   return (
-    <div className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-6 min-h-[100dvh]">
+    <div className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-6 min-h-[100dvh] prose">
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl font-bold">About Anonymous Board</h1>
+          <h1 className="text-3xl font-bold">About Anon Board</h1>
           <p className="text-muted-foreground mt-2">
             Anonymous Board is a secure and private platform for open
             discussions. We believe in the power of anonymous communication to

@@ -19,10 +19,10 @@ export function ThreadList({ threads }: ThreadListProps) {
       {threads.map((thread) => (
         <Card key={thread.id}>
           <CardHeader>
-            <CardTitle>{thread.title}</CardTitle>
+            <CardTitle className="prose">{thread.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm/relaxed">{thread.description}</p>
+            <p className="text-sm/relaxed prose">{thread.description}</p>
           </CardContent>
           <CardFooter>
             <Link

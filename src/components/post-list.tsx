@@ -14,20 +14,20 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
         <Card key={post.id}>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Avatar className="w-8 h-8">
+              <Avatar className="w-12 h-12">
                 <AvatarImage src="/placeholder-user.jpg" alt="Avatar" />
                 <AvatarFallback>-</AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium">{`${post.id}_${post.ipAddress}`}</div>
-                <div className="text-xs text-muted-foreground">
+                <div className="prose font-medium">{`${post.id}_${post.ipAddress}`}</div>
+                <div className="prose text-xs text-muted-foreground">
                   {dayjs(post.createdAt).fromNow()}
                 </div>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p>{post.content}</p>
+            <div className="prose whitespace-pre-wrap">{post.content}</div>
           </CardContent>
         </Card>
       ))}
