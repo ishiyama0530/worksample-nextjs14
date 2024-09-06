@@ -1,15 +1,16 @@
 "use server";
 
-import { createThreadScheme } from "@/app/_actions/create-thread/scheme";
+import { createThreadSchema } from "@/app/_actions/createThread/schema";
 import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { ulid } from "ulid";
 
 export async function createThread(_: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
-    schema: createThreadScheme,
+    schema: createThreadSchema,
   });
 
   if (submission.status !== "success") {
@@ -33,5 +34,6 @@ export async function createThread(_: unknown, formData: FormData) {
     },
   });
 
+  revalidateTag("get-threads");
   redirect("/threads");
 }

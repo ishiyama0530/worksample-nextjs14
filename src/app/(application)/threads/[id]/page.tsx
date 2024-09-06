@@ -1,27 +1,41 @@
 import { ThreadDetailPresentation } from "@/app/(application)/threads/[id]/_presentation";
 import prisma from "@/lib/prisma";
+import { unstable_cache } from "next/cache";
 import { notFound } from "next/navigation";
 
 export type ThreadDetailPageProps = { params: { id: string } };
 
-const getThread = async (id: string) => {
-  try {
-    const thread = await prisma.thread.findFirst();
+const getThread = (id: string) =>
+  unstable_cache(
+    () =>
+      prisma.thread.findFirst({
+        where: {
+          id,
+        },
+      }),
+    [`thread-${id}`],
+    { revalidate: 3600, tags: [`thread-${id}`] },
+  )();
 
-    return thread;
-  } catch (e) {
-    return null;
-  }
-};
+const getPosts = (threadId: string) =>
+  unstable_cache(
+    () =>
+      prisma.post.findMany({
+        where: { threadId },
+        orderBy: { createdAt: "asc" },
+      }),
+    [`thread-${threadId}`],
+    { revalidate: 3600, tags: [`thread-${threadId}`] },
+  )();
 
 export default async function ThreadDetailPage({
   params: { id },
 }: ThreadDetailPageProps) {
-  const thread = await getThread(id);
+  const [thread, posts] = await Promise.all([getThread(id), getPosts(id)]);
 
-  if (!thread) {
+  if (!thread || !posts) {
     return notFound();
   }
 
-  return <ThreadDetailPresentation thread={thread} />;
+  return <ThreadDetailPresentation thread={thread} posts={posts} />;
 }

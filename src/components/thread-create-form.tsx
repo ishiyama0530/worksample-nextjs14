@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  type CreateThreadData,
-  createThread,
-  createThreadScheme,
-} from "@/app/_actions/create-thread";
+import type { CreateThreadData } from "@/app/_actions/createThread";
+import { createThread, createThreadSchema } from "@/app/_actions/createThread";
 import { FormButton } from "@/components/from-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,7 +24,7 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: createThreadScheme });
+      return parseWithZod(formData, { schema: createThreadSchema });
     },
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
@@ -65,12 +62,7 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
           defaultValue={fields.post.initialValue}
         />
         <p>{fields.post.errors}</p>
-        <FormButton
-          type="submit"
-          className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-        >
-          Submit
-        </FormButton>
+        <FormButton type="submit">Submit</FormButton>
       </form>
     </div>
   );

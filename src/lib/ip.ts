@@ -7,8 +7,12 @@ export function getIpAddress() {
   const forwardedFor = headers().get("x-forwarded-for");
 
   if (forwardedFor) {
-    return forwardedFor.split(",")[0] ?? FALLBACK_IP_ADDRESS;
+    return adjustIp(forwardedFor.split(",")[0] ?? FALLBACK_IP_ADDRESS);
   }
 
-  return headers().get("x-real-ip") ?? FALLBACK_IP_ADDRESS;
+  return adjustIp(headers().get("x-real-ip") ?? FALLBACK_IP_ADDRESS);
 }
+
+const adjustIp = (ip: string) => {
+  return ip === "::1" ? "127.0.0.1" : ip;
+};

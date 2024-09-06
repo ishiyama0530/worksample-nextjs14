@@ -18,10 +18,10 @@ type SafeParseResult<T extends ZodRawShape> =
   | SafeParseError;
 
 export const safeParse = <T extends ZodRawShape>(
-  schemes: z.ZodObject<T>,
+  schema: z.ZodObject<T>,
   formData: FormData,
 ): SafeParseResult<T> => {
-  const { success, data, error } = schemes.safeParse(
+  const { success, data, error } = schema.safeParse(
     Object.fromEntries(formData),
   );
 

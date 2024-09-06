@@ -3,7 +3,7 @@ import Link from "next/link";
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-muted p-6 md:py-12 w-full shrink-0">
-      <div className="container max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-sm">
+      <div className="container max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-sm">
         <div className="grid gap-1">
           <h3 className="font-semibold">Company</h3>
           <Link href="#" prefetch={false}>

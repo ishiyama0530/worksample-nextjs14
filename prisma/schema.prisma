@@ -24,9 +24,11 @@ model Thread {
 
 model Post {
   id        String   @id @db.Char(26)
+  threadId  String
   content   String
   createdAt DateTime @default(now())
   ipAddress String
   thread    Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
-  threadId  String
+
+  @@index([threadId])
 }

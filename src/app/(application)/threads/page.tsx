@@ -1,7 +1,12 @@
 import { ThreadsPresentation } from "@/app/(application)/threads/_presentation";
 import prisma from "@/lib/prisma";
+import { unstable_cache } from "next/cache";
 
-const getThreads = () => prisma.thread.findMany();
+const getThreads = unstable_cache(
+  () => prisma.thread.findMany({ orderBy: { createdAt: "desc" } }),
+  [],
+  { revalidate: 3600, tags: ["get-threads"] },
+);
 
 export default async function ThreadsPage() {
   const threads = await getThreads();

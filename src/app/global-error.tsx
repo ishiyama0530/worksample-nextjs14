@@ -11,7 +11,7 @@ export default function GlobalError() {
           <h2 className="text-2xl font-semibold text-gray-600 mb-4">
             予期せぬエラーが発生しました
           </h2>
-          <p className="text-gray-500 mb-8">
+          <p className="text-gray-500 mb-8 px-4">
             申し訳ありませんが、時間をおいてお試しください。
           </p>
           <Link
