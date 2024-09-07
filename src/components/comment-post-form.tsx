@@ -7,6 +7,7 @@ import {
 } from "@/actions/postComment";
 import { FormError } from "@/components/element/form-error";
 import { FormButton } from "@/components/element/from-button";
+import { TermsCheckBox } from "@/components/element/terms-check-box";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,7 +19,7 @@ import {
   useForm,
 } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFormState } from "react-dom";
 
 export type CommentPostFormProps = {
@@ -28,6 +29,7 @@ export type CommentPostFormProps = {
 
 export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isTermsChecked, setTermsChecked] = useState(false);
   const [lastResult, action] = useFormState(postComment, {
     initialValue: {
       threadId,
@@ -83,7 +85,16 @@ export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
               })}
             />
             <FormError>{fields.postKeyword.errors}</FormError>
-            <FormButton type="submit">投稿する！</FormButton>
+
+            <div className="flex justify-center py-2">
+              <TermsCheckBox
+                checked={isTermsChecked}
+                onClick={setTermsChecked}
+              />
+            </div>
+            <FormButton type="submit" disabled={!isTermsChecked}>
+              投稿する！
+            </FormButton>
           </form>
         </CardContent>
       </Card>

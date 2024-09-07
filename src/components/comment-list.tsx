@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { Post } from "@prisma/client";
 import dayjs from "dayjs";
 
-export type PostListProps = {
+export type CommentListProps = {
   posts: readonly Post[];
 };
 
-export const PostList: React.FC<PostListProps> = ({ posts }) => {
+export const CommentList: React.FC<CommentListProps> = ({ posts }) => {
   return (
     <div className="grid gap-6">
       {posts.map((post) => (

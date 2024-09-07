@@ -1,5 +1,5 @@
+import { CommentList } from "@/components/comment-list";
 import { CommentPostForm } from "@/components/comment-post-form";
-import { PostList } from "@/components/post-list";
 import { ThreadDetailOverview } from "@/components/thread-detail-overview";
 import type { Post, Thread } from "@prisma/client";
 
@@ -20,7 +20,7 @@ export const ThreadDetailPresentation: React.FC<
             description={thread.description}
             threadId={thread.id}
           />
-          <PostList posts={posts} />
+          <CommentList posts={posts} />
           <CommentPostForm className="mt-8" threadId={thread.id} />
         </div>
       </div>
