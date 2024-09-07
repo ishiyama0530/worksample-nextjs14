@@ -21,8 +21,8 @@ export async function createThread(_: unknown, formData: FormData) {
       id: ulid().toLowerCase(),
       title: submission.value.title,
       description: submission.value.description,
-      keyPhrases: "keyPhrases",
-      password: "password",
+      postKeyword: submission.value.postKeyword, // 暗号化
+      password: submission.value.password,
       posts: {
         create: {
           id: ulid().toLowerCase(),

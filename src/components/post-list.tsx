@@ -20,7 +20,7 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
               </Avatar>
               <div>
                 <p className="prose text-sm">{`${post.id}_${post.ipAddress}`}</p>
-                <p className="prose text-xs text-muted-foreground">
+                <p className="prose text-xs text-muted-foreground mt-1">
                   {dayjs(post.createdAt).fromNow()}
                 </p>
               </div>

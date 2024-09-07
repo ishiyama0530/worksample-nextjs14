@@ -5,6 +5,7 @@ import {
   deleteThread,
   deleteThreadSchema,
 } from "@/actions/deleteThread";
+import { FormError } from "@/components/element/form-error";
 import { FormButton } from "@/components/element/from-button";
 import {
   Dialog,
@@ -15,7 +16,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { getRandomString } from "@/lib/random";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
@@ -60,26 +60,25 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Confirm Deletion</DialogTitle>
-          <DialogDescription>
-            Enter your password to confirm the deletion of this item.
+          <DialogTitle>スレッドを削除します</DialogTitle>
+          <DialogDescription className="py-2">
+            この操作は取り消せません。スレッドを削除するにはパスワードを入力してください。
           </DialogDescription>
         </DialogHeader>
         <form {...getFormProps(form)} action={action} className="grid gap-4">
           <input type="hidden" name="id" value={threadId} />
-          <div className="grid gap-4 py-4">
+          <div className="grid gap-4">
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
               <Input
                 {...getInputProps(fields.password, {
                   type: "password",
                 })}
-                placeholder="Enter your password"
+                placeholder="削除用パスワードを入力してください"
               />
             </div>
-            <p>{fields.password.errors}</p>
+            <FormError>{fields.password.errors}</FormError>
             <FormButton variant="destructive" className="w-full">
-              Confirm Deletion
+              確定する
             </FormButton>
           </div>
         </form>

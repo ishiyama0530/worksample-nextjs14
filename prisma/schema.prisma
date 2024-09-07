@@ -14,8 +14,8 @@ datasource db {
 model Thread {
   id          String   @id @db.Char(26)
   title       String
-  description String
-  keyPhrases  String
+  description String?
+  postKeyword String
   password    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

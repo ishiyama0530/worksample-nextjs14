@@ -5,7 +5,7 @@ import { Trash } from "lucide-react";
 export type ThreadDetailOverviewProps = {
   threadId: string;
   title: string;
-  description: string;
+  description: string | null;
 };
 
 export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
@@ -17,7 +17,9 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
     <div className="mb-6">
       <div>
         <h1 className="text-3xl prose">{title}</h1>
-        <p className="text-muted-foreground prose max-w-fit">{description}</p>
+        {description && (
+          <p className="text-muted-foreground prose max-w-fit">{description}</p>
+        )}
       </div>
       <div className="flex justify-end">
         <DeleteDialog threadId={threadId}>

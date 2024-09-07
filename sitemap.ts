@@ -38,6 +38,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: concatUrl("threads"),
       lastModified: now,
     },
+    {
+      url: concatUrl("terms"),
+      lastModified: now,
+    },
+    {
+      url: concatUrl("threads"),
+      lastModified: now,
+    },
     ...threadUrls,
   ];
 }

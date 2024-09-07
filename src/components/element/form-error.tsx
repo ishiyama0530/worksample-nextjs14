@@ -6,5 +6,5 @@ export const FormError: React.FC<FormErrorProps> = ({ children }) => {
   if (!children) {
     return null;
   }
-  return <p className="text-destructive">{children}</p>;
+  return <p className="text-destructive text-xs">{children}</p>;
 };

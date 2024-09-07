@@ -4,7 +4,7 @@ import { deleteThreadSchema } from "@/actions/deleteThread/schema";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 export async function deleteThread(_: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
@@ -15,17 +15,20 @@ export async function deleteThread(_: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  const thread = await prisma.thread.findFirst({
+  const thread = await prisma.thread.findUnique({
     where: {
       id: submission.value.id,
-      password: submission.value.password,
     },
   });
 
   if (!thread) {
+    notFound();
+  }
+
+  if (thread.password !== submission.value.password) {
     return submission.reply({
       fieldErrors: {
-        password: ["Invalid password"],
+        password: ["削除用パスワードが一致しません"],
       },
     });
   }

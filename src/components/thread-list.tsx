@@ -21,9 +21,11 @@ export function ThreadList({ threads }: ThreadListProps) {
           <CardHeader>
             <CardTitle className="prose">{thread.title}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm/relaxed prose">{thread.description}</p>
-          </CardContent>
+          {thread.description && (
+            <CardContent>
+              <p className="text-sm/relaxed prose">{thread.description}</p>
+            </CardContent>
+          )}
           <CardFooter>
             <Link
               href={`/threads/${thread.id}`}

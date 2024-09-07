@@ -8,8 +8,15 @@ import {
 import { FormError } from "@/components/element/form-error";
 import { FormButton } from "@/components/element/from-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
+import { cn } from "@/lib/utils";
+import {
+  getFormProps,
+  getInputProps,
+  getTextareaProps,
+  useForm,
+} from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
@@ -25,6 +32,7 @@ export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
     initialValue: {
       threadId,
       content: "",
+      postKeyword: "",
     } satisfies PostCommentData,
   });
   const [form, fields] = useForm({
@@ -45,7 +53,7 @@ export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
     <div className={className}>
       <Card>
         <CardHeader>
-          <CardTitle className="prose">Leave a comment</CardTitle>
+          <CardTitle className="prose">スレッドにコメントする</CardTitle>
         </CardHeader>
         <CardContent>
           <form
@@ -59,12 +67,23 @@ export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
               <Textarea
                 {...getTextareaProps(fields.content)}
                 className="field-sizing-content"
-                placeholder="Your comment"
+                placeholder="コメントを記述してください"
               />
               <FormError>{fields.content.errors}</FormError>
             </div>
             {fields.threadId.errors && <p>{fields.threadId.errors}</p>}
-            <FormButton type="submit">Submit</FormButton>
+
+            <Input
+              {...getInputProps(fields.postKeyword, {
+                type: "password",
+              })}
+              placeholder="投稿用キーワードを入力してください"
+              className={cn({
+                "border-destructive": fields.postKeyword.errors,
+              })}
+            />
+            <FormError>{fields.postKeyword.errors}</FormError>
+            <FormButton type="submit">投稿する！</FormButton>
           </form>
         </CardContent>
       </Card>
