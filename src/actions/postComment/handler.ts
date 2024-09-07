@@ -1,6 +1,6 @@
 "use server";
 
-import { postCommentSchema } from "@/app/_actions/postComment/schema";
+import { postCommentSchema } from "@/actions/postComment/schema";
 import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";

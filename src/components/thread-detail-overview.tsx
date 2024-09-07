@@ -14,12 +14,12 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
   description,
 }) => {
   return (
-    <div className="mb-6 flex justify-between">
+    <div className="mb-6">
       <div>
-        <h1 className="text-3xl font-bold prose">{title}</h1>
-        <p className="text-muted-foreground prose">{description}</p>
+        <h1 className="text-3xl prose">{title}</h1>
+        <p className="text-muted-foreground prose max-w-fit">{description}</p>
       </div>
-      <div className="self-end">
+      <div className="flex justify-end">
         <DeleteDialog threadId={threadId}>
           <Button
             size="icon"

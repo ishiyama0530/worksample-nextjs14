@@ -4,22 +4,22 @@ import {
   type PostCommentData,
   postComment,
   postCommentSchema,
-} from "@/app/_actions/postComment";
-import { FormButton } from "@/components/from-button";
+} from "@/actions/postComment";
+import { FormError } from "@/components/element/form-error";
+import { FormButton } from "@/components/element/from-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { getFormProps, getTextareaProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
-export type PostFormProps = {
+export type CommentPostFormProps = {
   threadId: string;
   className?: string;
 };
 
-export function PostForm({ threadId, className }: PostFormProps) {
+export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [lastResult, action] = useFormState(postComment, {
     initialValue: {
@@ -45,7 +45,7 @@ export function PostForm({ threadId, className }: PostFormProps) {
     <div className={className}>
       <Card>
         <CardHeader>
-          <CardTitle>Leave a comment</CardTitle>
+          <CardTitle className="prose">Leave a comment</CardTitle>
         </CardHeader>
         <CardContent>
           <form
@@ -55,14 +55,13 @@ export function PostForm({ threadId, className }: PostFormProps) {
             className="grid gap-4"
           >
             <input type="hidden" name="threadId" value={threadId} />
-            <div className="grid gap-1">
-              <Label htmlFor="message">Message</Label>
+            <div className="grid gap-4">
               <Textarea
                 {...getTextareaProps(fields.content)}
                 className="field-sizing-content"
-                placeholder="Your message"
+                placeholder="Your comment"
               />
-              <p>{fields.content.errors}</p>
+              <FormError>{fields.content.errors}</FormError>
             </div>
             {fields.threadId.errors && <p>{fields.threadId.errors}</p>}
             <FormButton type="submit">Submit</FormButton>

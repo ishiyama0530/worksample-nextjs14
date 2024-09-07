@@ -4,8 +4,8 @@ import {
   type DeleteThreadData,
   deleteThread,
   deleteThreadSchema,
-} from "@/app/_actions/deleteThread";
-import { FormButton } from "@/components/from-button";
+} from "@/actions/deleteThread";
+import { FormButton } from "@/components/element/from-button";
 import {
   Dialog,
   DialogContent,

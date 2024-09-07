@@ -1,6 +1,6 @@
 "use server";
 
-import { createThreadSchema } from "@/app/_actions/createThread/schema";
+import { createThreadSchema } from "@/actions/createThread/schema";
 import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";

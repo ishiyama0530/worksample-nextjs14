@@ -1,6 +1,6 @@
 "use server";
 
-import { deleteThreadSchema } from "@/app/_actions/deleteThread/schema";
+import { deleteThreadSchema } from "@/actions/deleteThread/schema";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";

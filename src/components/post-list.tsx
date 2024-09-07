@@ -12,22 +12,24 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
     <div className="grid gap-6">
       {posts.map((post) => (
         <Card key={post.id}>
-          <CardHeader>
+          <CardHeader className="py-4">
             <div className="flex items-center gap-2">
-              <Avatar className="w-12 h-12">
+              <Avatar className="w-10 h-10">
                 <AvatarImage src="/placeholder-user.jpg" alt="Avatar" />
                 <AvatarFallback>-</AvatarFallback>
               </Avatar>
               <div>
-                <div className="prose font-medium">{`${post.id}_${post.ipAddress}`}</div>
-                <div className="prose text-xs text-muted-foreground">
+                <p className="prose text-sm">{`${post.id}_${post.ipAddress}`}</p>
+                <p className="prose text-xs text-muted-foreground">
                   {dayjs(post.createdAt).fromNow()}
-                </div>
+                </p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="prose whitespace-pre-wrap">{post.content}</div>
+            <div className="prose-sm max-w-fit whitespace-pre-wrap">
+              {post.content}
+            </div>
           </CardContent>
         </Card>
       ))}

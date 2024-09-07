@@ -1,3 +1,12 @@
+export async function generateMetadata() {
+  return {
+    title: "About",
+    openGraph: {
+      title: "About",
+    },
+  };
+}
+
 export default function AboutPage() {
   return (
     <div className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-6 min-h-[100dvh] prose">

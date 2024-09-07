@@ -8,8 +8,17 @@ const inter = Inter({ subsets: ["latin"] });
 dayjs.extend(relativeTime);
 
 export const metadata: Metadata = {
-  title: "Anon Board",
-  description: "A simple anonymous message board",
+  title: {
+    template: "%s | Anon Board",
+    default: "Anon Board",
+  },
+  description: "A simple anonymous message board.",
+  openGraph: {
+    title: {
+      template: "%s - Anon Board",
+      default: "Anon Board",
+    },
+  },
 };
 
 export default function RootLayout({

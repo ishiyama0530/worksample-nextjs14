@@ -1,4 +1,4 @@
-import { ThreadDetailPresentation } from "@/app/(application)/threads/[id]/_presentation";
+import { ThreadDetailPresentation } from "@/app/(application)/threads/[id]/presentation";
 import prisma from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
 import { notFound } from "next/navigation";
@@ -27,6 +27,19 @@ const getPosts = (threadId: string) =>
     [`thread-${threadId}`],
     { revalidate: 3600, tags: [`thread-${threadId}`] },
   )();
+
+export async function generateMetadata({
+  params: { id },
+}: ThreadDetailPageProps) {
+  const thread = await getThread(id);
+  return {
+    title: thread?.title,
+    description: thread?.description,
+    openGraph: {
+      title: thread?.title,
+    },
+  };
+}
 
 export default async function ThreadDetailPage({
   params: { id },

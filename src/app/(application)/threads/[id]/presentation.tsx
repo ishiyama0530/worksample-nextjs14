@@ -1,5 +1,4 @@
-import Pagination from "@/components/pagination";
-import { PostForm } from "@/components/post-form";
+import { CommentPostForm } from "@/components/comment-post-form";
 import { PostList } from "@/components/post-list";
 import { ThreadDetailOverview } from "@/components/thread-detail-overview";
 import type { Post, Thread } from "@prisma/client";
@@ -22,8 +21,7 @@ export const ThreadDetailPresentation: React.FC<
             threadId={thread.id}
           />
           <PostList posts={posts} />
-          <Pagination className="mt-8" />
-          <PostForm className="mt-8" threadId={thread.id} />
+          <CommentPostForm className="mt-8" threadId={thread.id} />
         </div>
       </div>
     </div>

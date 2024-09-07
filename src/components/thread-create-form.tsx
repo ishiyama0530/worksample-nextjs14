@@ -1,8 +1,9 @@
 "use client";
 
-import type { CreateThreadData } from "@/app/_actions/createThread";
-import { createThread, createThreadSchema } from "@/app/_actions/createThread";
-import { FormButton } from "@/components/from-button";
+import type { CreateThreadData } from "@/actions/createThread";
+import { createThread, createThreadSchema } from "@/actions/createThread";
+import { FormError } from "@/components/element/form-error";
+import { FormButton } from "@/components/element/from-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -44,7 +45,7 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
 
   return (
     <div className={className}>
-      <h2 className="text-2xl font-bold mb-4">Create a New Thread</h2>
+      <h2 className="text-2xl font-bold mb-4 prose">Create a New Thread</h2>
       <form
         {...getFormProps(form)}
         ref={formRef}
@@ -57,21 +58,21 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
           })}
           placeholder="Thread Title"
         />
-        <p>{fields.title.errors}</p>
+        <FormError>{fields.title.errors}</FormError>
         <Input
           {...getInputProps(fields.description, {
             type: "text",
           })}
           placeholder="Thread Description"
         />
-        <p>{fields.description.errors}</p>
+        <FormError>{fields.description.errors}</FormError>
         <Textarea
           {...getTextareaProps(fields.post)}
           rows={4}
           className="field-sizing-content"
           placeholder="First Post"
         />
-        <p>{fields.post.errors}</p>
+        <FormError>{fields.post.errors}</FormError>
         <FormButton type="submit">Submit</FormButton>
       </form>
     </div>

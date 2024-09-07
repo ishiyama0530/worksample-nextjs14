@@ -1,4 +1,4 @@
-import { ThreadsPresentation } from "@/app/(application)/threads/_presentation";
+import { ThreadsPresentation } from "@/app/(application)/threads/presentation";
 import prisma from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
 
