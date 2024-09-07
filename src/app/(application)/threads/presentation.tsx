@@ -13,7 +13,7 @@ export function ThreadsPresentation({ threads }: ThreadsPresentationProps) {
     <div className="flex flex-col min-h-[100dvh]">
       <div className="flex-1 bg-muted py-12 md:py-20">
         <div className="mx-auto container px-4 md:px-6">
-          <ThreadOverview title="Threads" description="Threads description" />
+          <ThreadOverview title="Threads" description="" />
           <ThreadList threads={threads} />
           <Pagination className="mt-12 flex justify-center" />
           <ThreadCreateForm className="mt-12 bg-background rounded-lg p-6 max-w-4xl mx-auto" />
