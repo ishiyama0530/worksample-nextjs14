@@ -15,8 +15,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold">Contact</h2>
           <div className="text-muted-foreground mt-2 space-y-2">
             <p>
-              If you have any questions or concerns, please don't hesitate to
-              reach out to our support team:
+              ご質問やご不明な点がございましたら、お気軽に弊社サポートチームまでお問い合わせください:
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>

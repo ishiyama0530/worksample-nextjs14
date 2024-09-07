@@ -14,39 +14,16 @@ export default function AboutPage() {
         <div>
           <h1 className="text-3xl font-bold">About Anon Board</h1>
           <p className="text-muted-foreground mt-2">
-            Anonymous Board is a secure and private platform for open
-            discussions. We believe in the power of anonymous communication to
-            foster honest and meaningful conversations.
+            Anon
+            Boardは、公開討論のための安全でプライベートなプラットフォームです。私たちは匿名のコミュニケーションの力を信じて、誠実で意味のある会話を育むことを目指しています。
           </p>
         </div>
         <div>
           <h2 className="text-2xl font-bold">Anonymity Guaranteed</h2>
           <p className="text-muted-foreground mt-2">
-            At Anonymous Board, we take your privacy seriously. We do not
-            collect any personal information, and your identity is completely
-            hidden from other users. You can express yourself freely without
-            fear of being identified.
+            Anon
+            Boardでは、プライバシーを真剣に考えています。個人情報は一切収集せず、他のユーザーからは完全に隠されています。自己表現することができ、身元が特定される心配なく自由に意見を述べることができます。
           </p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold">Terms of Service</h2>
-          <div className="text-muted-foreground mt-2 space-y-2">
-            <p>By using Anonymous Board, you agree to our terms of service:</p>
-            <ul className="list-disc pl-6 space-y-1">
-              <li>
-                No illegal or harmful content is allowed, including hate speech,
-                explicit violence, or copyrighted material.
-              </li>
-              <li>
-                Respect other users and their anonymity. Do not attempt to
-                identify or harass other users.
-              </li>
-              <li>
-                Report any inappropriate or abusive content to our moderation
-                team.
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

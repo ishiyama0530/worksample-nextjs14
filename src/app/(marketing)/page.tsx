@@ -11,10 +11,7 @@ export default function TopPage() {
                 Discover the Power of Anonymous Discussions
               </h1>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Our anonymous discussion board allows you to share your
-                thoughts, ideas, and experiences without fear of judgment or
-                identification. Join a vibrant community of open-minded
-                individuals and explore a world of diverse perspectives.
+                私たちの匿名掲示板では、他の人の目を気にせずに、あなたの考えやアイデア、経験を気軽にシェアできます。開かれた心を持つ仲間たちとともに、多様な視点を楽しむ素敵なコミュニティに参加してみませんか？
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link
@@ -22,7 +19,7 @@ export default function TopPage() {
                   className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >
-                  Check Thread List
+                  スレッドリストを見てみる
                 </Link>
                 {/* <Link
                   href="#"
@@ -57,11 +54,7 @@ export default function TopPage() {
                 Speak Freely, Stay Anonymous
               </h2>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Our anonymous discussion board provides a safe and secure
-                platform for you to share your thoughts, ideas, and experiences
-                without fear of being identified. Engage in open and honest
-                conversations, and connect with like-minded individuals from
-                around the world.
+                私たちの匿名掲示板は、あなたが自由に考えやアイデア、経験をシェアできる、安心で安全な場所です。気軽にオープンな会話を楽しんで、世界中の仲間たちとつながりましょう。
               </p>
             </div>
           </div>
@@ -73,11 +66,7 @@ export default function TopPage() {
                 Explore a Diverse Community
               </h2>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Our anonymous discussion board is a hub for individuals from all
-                walks of life to come together and share their unique
-                perspectives. Discover a wide range of topics, from
-                thought-provoking discussions to lighthearted conversations, and
-                engage with a diverse community of open-minded participants.
+                私たちの匿名掲示板は、さまざまな背景を持つ人々が集まり、それぞれの視点を気軽に共有できる場所です。考えさせられる話題から楽しいおしゃべりまで、さまざまなトピックを楽しみながら、多様なオープンマインドの仲間たちと交流しましょう。
               </p>
             </div>
             <img
