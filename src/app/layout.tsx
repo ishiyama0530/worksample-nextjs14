@@ -5,6 +5,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "dayjs/locale/ja";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -35,7 +37,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        {children}
+        <Header />
+        <main className="mx-auto">{children}</main>
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>

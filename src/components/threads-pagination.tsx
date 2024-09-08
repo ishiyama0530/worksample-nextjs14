@@ -1,7 +1,6 @@
 "use client";
 
 import Pagination from "@/components/element/pagination";
-import {} from "@/components/ui/pagination";
 import { useRouter } from "next/navigation";
 
 export type ThreadPaginationProps = {

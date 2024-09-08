@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {} from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
 import type { Thread } from "@prisma/client";
 import Link from "next/link";

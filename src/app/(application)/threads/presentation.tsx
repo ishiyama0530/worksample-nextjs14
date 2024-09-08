@@ -19,7 +19,7 @@ export function ThreadsPresentation({
     <div className="flex flex-col min-h-[100dvh]">
       <div className="flex-1 bg-muted py-12">
         <div className="mx-auto container px-4 md:px-6">
-          <ThreadOverview title="Threads" description="" />
+          <ThreadOverview />
           <ThreadList threads={threads} />
           <ThreadPagination
             currentPage={currentPage}

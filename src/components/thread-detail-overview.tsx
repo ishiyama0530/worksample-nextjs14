@@ -14,7 +14,7 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
   description,
 }) => {
   return (
-    <div className="mb-6">
+    <div className="mb-2">
       <div>
         <h1 className="text-3xl prose">{title}</h1>
         {description && (

@@ -11,7 +11,8 @@ export default function TopPage() {
                 Discover the Power of Anonymous Discussions
               </h1>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                私たちの匿名掲示板では、他の人の目を気にせずに、あなたの考えやアイデア、経験を気軽にシェアできます。開かれた心を持つ仲間たちとともに、多様な視点を楽しむ素敵なコミュニティに参加してみませんか？
+                Anon Boardは、誰でも気軽に参加できるシンプルな匿名掲示板です。
+                SNSやメールでURLを共有して、
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link
