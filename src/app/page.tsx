@@ -35,8 +35,8 @@ export default function TopPage() {
             </div>
             <Image
               src="/home1.svg"
-              width="360"
-              height="200"
+              width="500"
+              height="310"
               alt="Hero"
               objectFit="contain"
               className="justify-self-end py-10 md:py-0"
