@@ -54,7 +54,7 @@ export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
 
   return (
     <div className={className}>
-      <Card>
+      <Card className="rounded-none">
         <CardHeader>
           <CardTitle className="prose">スレッドにコメントする</CardTitle>
         </CardHeader>
