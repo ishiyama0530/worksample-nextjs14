@@ -119,6 +119,9 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
           作成する！
         </FormButton>
       </form>
+      <div className="flex justify-center py-2">
+        <TermsCheckBox checked={isTermsChecked} onClick={setTermsChecked} />
+      </div>
     </div>
   );
 }
