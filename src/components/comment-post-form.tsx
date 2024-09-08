@@ -5,12 +5,13 @@ import {
   postComment,
   postCommentSchema,
 } from "@/actions/postComment";
+import { FormButton } from "@/components/element/form-button";
 import { FormError } from "@/components/element/form-error";
-import { FormButton } from "@/components/element/from-button";
-import { TermsCheckBox } from "@/components/element/terms-check-box";
+import { TermsCheckBox } from "@/components/element/terms-checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { usePersistenceTermsChecked } from "@/hooks/usePersistenceTermsChecked";
 import { cn } from "@/lib/utils";
 import {
   getFormProps,
@@ -19,7 +20,7 @@ import {
   useForm,
 } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
 export type CommentPostFormProps = {
@@ -29,7 +30,7 @@ export type CommentPostFormProps = {
 
 export function CommentPostForm({ threadId, className }: CommentPostFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
-  const [isTermsChecked, setTermsChecked] = useState(false);
+  const { isTermsChecked, setTermsChecked } = usePersistenceTermsChecked();
   const [lastResult, action] = useFormState(postComment, {
     initialValue: {
       threadId,

@@ -2,7 +2,7 @@ import { ThreadsPresentation } from "@/app/(application)/threads/presentation";
 import prisma from "@/lib/prisma";
 import { unstable_cache } from "next/cache";
 
-const limit = 10;
+const limit = 12;
 
 const getThreads = (page: number) =>
   unstable_cache(

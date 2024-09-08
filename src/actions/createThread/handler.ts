@@ -5,6 +5,7 @@ import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 import { ulid } from "ulid";
 
 export async function createThread(_: unknown, formData: FormData) {
@@ -16,9 +17,10 @@ export async function createThread(_: unknown, formData: FormData) {
     return submission.reply();
   }
 
+  const id = ulid().toLowerCase();
   await prisma.thread.create({
     data: {
-      id: ulid().toLowerCase(),
+      id,
       title: submission.value.title,
       description: submission.value.description,
       postKeyword: submission.value.postKeyword, // 暗号化
@@ -34,7 +36,5 @@ export async function createThread(_: unknown, formData: FormData) {
   });
 
   revalidateTag("get-threads");
-  return {
-    status: submission.status,
-  };
+  redirect(`/threads/${id}`);
 }

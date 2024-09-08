@@ -5,8 +5,8 @@ import {
   deleteThread,
   deleteThreadSchema,
 } from "@/actions/deleteThread";
+import { FormButton } from "@/components/element/form-button";
 import { FormError } from "@/components/element/form-error";
-import { FormButton } from "@/components/element/from-button";
 import {
   Dialog,
   DialogContent,

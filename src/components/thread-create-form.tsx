@@ -2,11 +2,12 @@
 
 import type { CreateThreadData } from "@/actions/createThread";
 import { createThread, createThreadSchema } from "@/actions/createThread";
+import { FormButton } from "@/components/element/form-button";
 import { FormError } from "@/components/element/form-error";
-import { FormButton } from "@/components/element/from-button";
-import { TermsCheckBox } from "@/components/element/terms-check-box";
+import { TermsCheckBox } from "@/components/element/terms-checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { usePersistenceTermsChecked } from "@/hooks/usePersistenceTermsChecked";
 import { cn } from "@/lib/utils";
 import {
   getFormProps,
@@ -15,7 +16,7 @@ import {
   useForm,
 } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useFormState } from "react-dom";
 
 export type ThreadCreateFormProps = {
@@ -23,8 +24,7 @@ export type ThreadCreateFormProps = {
 };
 
 export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [isTermsChecked, setTermsChecked] = useState(false);
+  const { isTermsChecked, setTermsChecked } = usePersistenceTermsChecked();
   const [password, setPassword] = useState("");
   const [postKeyword, setPostKeyword] = useState("");
 
@@ -45,21 +45,10 @@ export function ThreadCreateForm({ className }: ThreadCreateFormProps) {
     shouldRevalidate: "onInput",
   });
 
-  useEffect(() => {
-    if (lastResult.status === "success") {
-      formRef.current?.reset();
-    }
-  }, [lastResult]);
-
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold mb-4 prose">スレッドを作成する</h2>
-      <form
-        {...getFormProps(form)}
-        ref={formRef}
-        action={action}
-        className="grid gap-4"
-      >
+      <form {...getFormProps(form)} action={action} className="grid gap-4">
         <Input
           {...getInputProps(fields.title, {
             type: "text",
