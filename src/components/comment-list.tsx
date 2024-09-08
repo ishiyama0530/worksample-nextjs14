@@ -13,13 +13,13 @@ export const CommentList: React.FC<CommentListProps> = ({ posts }) => {
     <div className="flex flex-col gap-6">
       {posts.map((post) => (
         <Card key={post.id}>
-          <CardHeader className="py-4">
-            <div className="flex items-center gap-2">
+          <CardHeader className="py-4 px-2 md:px-4">
+            <div className="flex items-center gap-1">
               <Avatar className="w-10 h-10 grid place-content-center">
                 <User2 className="h-7 w-7" />
               </Avatar>
               <div>
-                <p className="prose text-sm">{`${post.id}_${post.ipAddress}`}</p>
+                <p className="prose text-sm">{`***${post.id.slice(-6, -1)}**@${post.ipAddress}`}</p>
                 <p className="prose text-xs text-muted-foreground mt-1">
                   {dayjs(post.createdAt).fromNow()}
                 </p>

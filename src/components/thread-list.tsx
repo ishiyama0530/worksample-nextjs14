@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {} from "@/components/ui/pagination";
+import { cn } from "@/lib/utils";
 import type { Thread } from "@prisma/client";
 import Link from "next/link";
 
@@ -17,22 +19,31 @@ export function ThreadList({ threads }: ThreadListProps) {
   return (
     <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {threads.map((thread) => (
-        <Card key={thread.id}>
-          <CardHeader>
-            <CardTitle className="prose">{thread.title}</CardTitle>
+        <Card key={thread.id} className="h-52 flex flex-col">
+          <CardHeader className="pb-2 max-h-20">
+            <CardTitle className="prose text-sm line-clamp-2 break-words">
+              {thread.title}
+            </CardTitle>
           </CardHeader>
           {thread.description && (
-            <CardContent>
-              <p className="text-sm/relaxed prose">{thread.description}</p>
+            <CardContent className="pb-2 max-h-20">
+              <p className="text-xs/relaxed prose line-clamp-3 break-words">
+                {thread.description}
+              </p>
             </CardContent>
           )}
-          <CardFooter>
+          <CardFooter className="pb-4 flex items-end grow">
             <Link
               href={`/threads/${thread.id}`}
-              className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+              className={cn(
+                buttonVariants({
+                  size: "sm",
+                }),
+                "w-full",
+              )}
               prefetch={false}
             >
-              View Post
+              View
             </Link>
           </CardFooter>
         </Card>
