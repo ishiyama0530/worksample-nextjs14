@@ -1,3 +1,5 @@
+"use client";
+
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -24,16 +26,6 @@ export const TermsCheckBox: React.FC<TermsCheckBoxProps> = ({
             利用規約
           </Link>
           に同意する
-        </Label>
-      </div>
-      <div className="flex items-center space-x-2 mt-4">
-        <Checkbox
-          id="terms"
-          checked={checked}
-          onClick={() => onClick?.(!checked)}
-        />
-        <Label htmlFor="terms" className="cursor-pointer">
-          利用規約に同意する
         </Label>
       </div>
     </div>
