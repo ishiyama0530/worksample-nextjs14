@@ -1,3 +1,4 @@
+import { Github, Twitter } from "lucide-react";
 import Link from "next/link";
 
 export const Footer: React.FC = () => {
@@ -21,6 +22,22 @@ export const Footer: React.FC = () => {
         >
           Privacy Policy
         </Link>
+        <div className="flex gap-2">
+          <a
+            href="https://github.com/ishiyama0530"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github className="mr-2 h-4 w-4" />
+          </a>
+          <a
+            href="https://x.com/otsukarestful"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Twitter className="mr-2 h-4 w-4" />
+          </a>
+        </div>
       </nav>
     </footer>
   );

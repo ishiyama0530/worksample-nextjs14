@@ -1,5 +1,6 @@
+import { MobileMenu } from "@/components/layout/moblie-menu";
 import { Button } from "@/components/ui/button";
-import { FlaskRound, MenuIcon } from "lucide-react";
+import { FlaskRound, Info, MenuIcon, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 
 export const Header: React.FC = () => {
@@ -12,30 +13,37 @@ export const Header: React.FC = () => {
       <nav className="hidden gap-4 md:flex">
         <Link
           href="/threads"
-          className="text-sm font-medium hover:underline underline-offset-4"
+          className="text-sm font-medium hover:underline underline-offset-4 flex items-center"
           prefetch={false}
         >
+          <MessageCircle className="mr-2 h-4 w-4" />
           Threads
         </Link>
         <Link
           href="/about"
-          className="text-sm font-medium hover:underline underline-offset-4"
+          className="text-sm font-medium hover:underline underline-offset-4 flex items-center"
           prefetch={false}
         >
+          <Info className="mr-2 h-4 w-4" />
           About
         </Link>
         <Link
           href="/contact"
-          className="text-sm font-medium hover:underline underline-offset-4"
+          className="text-sm font-medium hover:underline underline-offset-4 flex items-center"
           prefetch={false}
         >
+          <Phone className="mr-2 h-4 w-4" />
           Contact
         </Link>
       </nav>
-      <Button variant="outline" size="sm" className="md:hidden">
-        <MenuIcon className="h-4 w-4" />
-        <span className="sr-only">Toggle navigation</span>
-      </Button>
+      <div className="md:hidden">
+        <MobileMenu>
+          <Button variant="outline" size="sm">
+            <MenuIcon className="h-4 w-4" />
+            <span className="sr-only">Toggle navigation</span>
+          </Button>
+        </MobileMenu>
+      </div>
     </header>
   );
 };

@@ -19,14 +19,24 @@ export default function AboutPage() {
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>
-                GitHub:{" "}
-                <a href="https://github.com/ishiyama0530" className="underline">
+                GitHub:
+                <a
+                  href="https://github.com/ishiyama0530"
+                  className="pl-2 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   ishiyama
                 </a>
               </li>
               <li>
-                Twitter:{" "}
-                <a href="https://x.com/otsukarestful" className="underline">
+                Twitter:
+                <a
+                  href="https://x.com/otsukarestful"
+                  className="pl-2 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   @otsukarestful
                 </a>
               </li>
