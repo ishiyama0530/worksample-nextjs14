@@ -10,9 +10,9 @@ export type CommentListProps = {
 
 export const CommentList: React.FC<CommentListProps> = ({ posts }) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
       {posts.map((post) => (
-        <Card key={post.id}>
+        <Card key={post.id} className="rounded-none sm:rounded-lg">
           <CardHeader className="py-4 px-2 md:px-4">
             <div className="flex items-center gap-1">
               <Avatar className="w-10 h-10 grid place-content-center">

@@ -15,10 +15,12 @@ export const ThreadDetailOverview: React.FC<ThreadDetailOverviewProps> = ({
 }) => {
   return (
     <div className="mb-2">
-      <div>
+      <div className="px-2">
         <h1 className="text-3xl prose">{title}</h1>
         {description && (
-          <p className="text-muted-foreground prose max-w-fit">{description}</p>
+          <p className="px-1 text-muted-foreground prose max-w-fit">
+            {description}
+          </p>
         )}
       </div>
       <div className="flex justify-end">

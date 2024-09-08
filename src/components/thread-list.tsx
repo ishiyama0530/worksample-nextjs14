@@ -16,7 +16,7 @@ export type ThreadListProps = {
 
 export function ThreadList({ threads }: ThreadListProps) {
   return (
-    <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {threads.map((thread) => (
         <Card key={thread.id} className="h-52 flex flex-col">
           <CardHeader className="pb-2 max-h-20">
