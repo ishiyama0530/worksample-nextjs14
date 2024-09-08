@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function TopPage() {
@@ -5,14 +6,15 @@ export default function TopPage() {
     <div className="flex min-h-[100dvh] flex-col">
       <div className="flex-1 mx-auto">
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-4">
+          <div className="container grid gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+            <div className="space-y-4 prose">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Discover the Power of Anonymous Discussions
+                Discover the Power of Anonymous Discussions.
               </h1>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Anon Boardは、誰でも気軽に参加できるシンプルな匿名掲示板です。
-                SNSやメールでURLを共有して、
+                Anon Boardは、気軽に使用できるシンプルな掲示板です。
+                <br />
+                URLをSNSやメールで共有することで、誰でも匿名でスレッドに参加できます。
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link
@@ -31,52 +33,63 @@ export default function TopPage() {
                 </Link> */}
               </div>
             </div>
-            <img
-              src="/placeholder.svg"
-              width="550"
-              height="550"
+            <Image
+              src="/home1.svg"
+              width="360"
+              height="200"
               alt="Hero"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
+              objectFit="contain"
+              className="justify-self-end py-10 md:py-0"
             />
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <img
-              src="/placeholder.svg"
-              width="550"
-              height="310"
-              // biome-ignore lint/a11y/noRedundantAlt: <explanation>
+            <Image
+              src="/home2.svg"
+              width="360"
+              height="200"
               alt="Site image"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+              objectFit="contain"
+              className="justify-self-start py-10 md:py-0"
             />
-            <div className="space-y-4">
+            <div className="space-y-4 prose">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Speak Freely, Stay Anonymous
+                Built with Next.js AppRouter.
               </h2>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                私たちの匿名掲示板は、あなたが自由に考えやアイデア、経験をシェアできる、安心で安全な場所です。気軽にオープンな会話を楽しんで、世界中の仲間たちとつながりましょう。
+                Anon Boardは、Next.jsのAppRouterを使用しています。
+                <br />
+                Next.jsはReactを使用したフルスタックのWebアプリケーションフレームワークです。
+                <br />
+                App Routerは、React Server
+                Componentsを活用したNext.jsの新たなビルドシステムです。
               </p>
             </div>
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <div className="space-y-4">
+            <div className="space-y-4 prose">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Explore a Diverse Community
+                Update Element by SSR and Server Actions.
               </h2>
               <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                私たちの匿名掲示板は、さまざまな背景を持つ人々が集まり、それぞれの視点を気軽に共有できる場所です。考えさせられる話題から楽しいおしゃべりまで、さまざまなトピックを楽しみながら、多様なオープンマインドの仲間たちと交流しましょう。
+                Anon
+                Boardは、サーバーサイドレンダリングを主に使用して画面を描画しています。
+                <br />
+                データの更新は、サーバーアクションを使用して行います。
+                <br />
+                これらはページの読み込み精度を高め、SEOを向上させます。
               </p>
             </div>
-            <img
-              src="/placeholder.svg"
-              width="550"
-              height="310"
-              // biome-ignore lint/a11y/noRedundantAlt: <explanation>
+            <Image
+              src="/home3.svg"
+              width="360"
+              height="200"
               alt="Site image"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+              objectFit="contain"
+              className="justify-self-end  py-10 md:py-0"
             />
           </div>
         </section>
