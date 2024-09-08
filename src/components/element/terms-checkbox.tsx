@@ -2,7 +2,6 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 
 export type TermsCheckBoxProps = {
   checked?: boolean;
@@ -22,9 +21,14 @@ export const TermsCheckBox: React.FC<TermsCheckBoxProps> = ({
           onClick={() => onClick?.(!checked)}
         />
         <Label htmlFor="terms" className="cursor-pointer">
-          <Link href="/terms" className="underline text-blue-700">
+          <a
+            href="/terms"
+            className="underline text-blue-700"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             利用規約
-          </Link>
+          </a>
           に同意する
         </Label>
       </div>
