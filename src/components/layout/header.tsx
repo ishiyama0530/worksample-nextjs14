@@ -1,14 +1,14 @@
 import { MobileMenu } from "@/components/layout/moblie-menu";
 import { Button } from "@/components/ui/button";
-import { FlaskRound, Info, MenuIcon, MessageCircle, Phone } from "lucide-react";
+import { Blend, Info, MenuIcon, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 
 export const Header: React.FC = () => {
   return (
     <header className="flex h-16 items-center justify-between border-b bg-background px-4 md:px-6">
       <Link href="/" className="flex items-center gap-2" prefetch={false}>
-        <FlaskRound className="h-6 w-6" />
-        <span className="text-lg font-semibold">Anon Board</span>
+        <Blend className="h-7 w-7" />
+        <span className="text-xl tracking-tighter">Anon Board</span>
       </Link>
       <nav className="hidden gap-4 md:flex">
         <Link

@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       default: "Anon Board",
     },
   },
+  icons: [{ rel: "icon", url: "/favicon.svg" }],
 };
 
 export default function RootLayout({
