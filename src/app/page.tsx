@@ -9,10 +9,10 @@ export default function TopPage() {
       <section className="snap-start w-full h-[calc(100dvh-4rem)] grid place-content-center py-12 md:py-24 lg:py-32">
         <div className="container grid gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
           <div className="prose">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <h1 className="text-2xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Discover the Power of Anonymous Discussions.
             </h1>
-            <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-muted-foreground text-sm md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Anon Boardは気軽に使用できるシンプルな掲示板です。
               <br />
               URLをSNSやメールで共有することで、誰でも匿名でスレッドに参加できます。
@@ -39,7 +39,7 @@ export default function TopPage() {
             width="500"
             height="340"
             alt="Hero"
-            className="justify-self-end py-10 lg:py-0"
+            className="justify-self-end"
             priority
           />
         </div>
@@ -55,7 +55,7 @@ export default function TopPage() {
             className="justify-self-start py-10 lg:py-0"
           />
           <div className="space-y-4 prose">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Built with Next.js AppRouter.
             </h2>
             <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -73,10 +73,10 @@ export default function TopPage() {
       <section className="snap-start w-full h-[calc(100dvh-4rem)] grid place-content-center py-12 md:py-24 lg:py-32">
         <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4 prose">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Update Element by SSR and Server Actions.
             </h2>
-            <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-muted-foreground text-sm md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Anon
               Boardは、サーバーサイドレンダリングを主に使用して画面を描画しています。
               <br />

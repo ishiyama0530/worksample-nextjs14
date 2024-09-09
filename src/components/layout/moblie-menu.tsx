@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,16 +9,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Github, Info, MessageCircle, Phone, Twitter } from "lucide-react";
 import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
 
 export type MobileMenuProps = {
   children?: React.ReactNode;
 };
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleItemClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent className="w-32 mr-2">
+      <DropdownMenuContent className="w-32 mr-2" onClick={handleItemClick}>
         <DropdownMenuItem>
           <MessageCircle className="mr-2 h-4 w-4" />
           <Link href="/threads">Threads</Link>
