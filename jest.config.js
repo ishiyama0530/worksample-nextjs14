@@ -9,6 +9,9 @@ const createJestConfig = nextJest({
 // Jest に渡すカスタム設定を追加する
 const customJestConfig = {
   testMatch: ["**/__tests__/**/*.test.+(ts|tsx)"],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
   // 各テストの実行前に渡すオプションを追加
   setupFilesAfterEnv: ["<rootDir>/__tests__/jest.setup.ts"],
   // TypeScript の設定で baseUrl をルートディレクトリに設定している場合、alias を動作させるためには以下のようにする必要があります

@@ -1,23 +1,24 @@
+import { Button } from "@/components/ui/button";
 import {
   PaginationContent,
   PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
   Pagination as UiPagination,
 } from "@/components/ui/pagination";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export type PaginationProps = {
   currentPage: number;
   hasNext?: boolean;
   className?: string;
-  onClick?: (nextPage: number) => void;
+  hrefTemplate?: (nextPage: number) => string;
 };
 
-export default function Pagination({
+export function Pagination({
   currentPage,
   hasNext,
   className,
-  onClick,
+  hrefTemplate,
 }: PaginationProps) {
   const hasPrev = currentPage > 1;
 
@@ -26,26 +27,34 @@ export default function Pagination({
       <UiPagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious
-              onClick={() => onClick?.(currentPage - 1)}
-              className={
-                hasPrev ? "cursor-pointer" : "pointer-events-none opacity-50"
-              }
+            <Button
+              variant="ghost"
+              disabled={!hasPrev}
               aria-disabled={!hasPrev}
             >
-              Previous
-            </PaginationPrevious>
+              <Link
+                href={hrefTemplate ? hrefTemplate(currentPage - 1) : "#"}
+                className="flex items-center gap-1"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </Link>
+            </Button>
           </PaginationItem>
           <PaginationItem>
-            <PaginationNext
-              onClick={() => hasNext && onClick?.(currentPage + 1)}
-              className={
-                hasNext ? "cursor-pointer" : "pointer-events-none opacity-50"
-              }
+            <Button
+              variant="ghost"
+              disabled={!hasNext}
               aria-disabled={!hasNext}
             >
-              Next
-            </PaginationNext>
+              <Link
+                href={hrefTemplate ? hrefTemplate(currentPage + 1) : "#"}
+                className="flex items-center gap-1"
+              >
+                Next
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </PaginationItem>
         </PaginationContent>
       </UiPagination>

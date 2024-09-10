@@ -1,7 +1,7 @@
+import { Pagination } from "@/components/element/pagination";
 import { ThreadCreateForm } from "@/components/thread-create-form";
 import { ThreadList } from "@/components/thread-list";
 import { ThreadOverview } from "@/components/thread-overview";
-import ThreadPagination from "@/components/threads-pagination";
 import type { Thread } from "@prisma/client";
 
 export type ThreadsPresentationProps = {
@@ -21,10 +21,11 @@ export function ThreadsPresentation({
         <div className="mx-auto container px-4 md:px-6">
           <ThreadOverview />
           <ThreadList threads={threads} />
-          <ThreadPagination
+          <Pagination
             currentPage={currentPage}
             hasNext={hasNext}
             className="mt-12 flex justify-center"
+            hrefTemplate={(nextPage) => `/threads?page=${nextPage}`}
           />
           <ThreadCreateForm className="mt-12 bg-background rounded-lg p-6 max-w-4xl mx-auto" />
         </div>
