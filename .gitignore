@@ -38,3 +38,7 @@ next-env.d.ts
 # add
 .env
 .swc
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
