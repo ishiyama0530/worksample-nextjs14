@@ -1,6 +1,7 @@
 "use server";
 
 import { postCommentSchema } from "@/actions/postComment/schema";
+import { verify } from "@/lib/hash";
 import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
@@ -27,7 +28,8 @@ export async function postComment(_: unknown, formData: FormData) {
     notFound();
   }
 
-  if (thread.postKeyword !== submission.value.postKeyword) {
+  const ok = await verify(submission.value.postKeyword, thread.postKeyword);
+  if (!ok) {
     return submission.reply({
       fieldErrors: {
         postKeyword: ["投稿用キーワードが一致しません"],

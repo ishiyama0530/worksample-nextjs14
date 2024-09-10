@@ -1,6 +1,7 @@
 "use server";
 
 import { deleteThreadSchema } from "@/actions/deleteThread/schema";
+import { verify } from "@/lib/hash";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
 import { revalidateTag } from "next/cache";
@@ -25,7 +26,8 @@ export async function deleteThread(_: unknown, formData: FormData) {
     notFound();
   }
 
-  if (thread.password !== submission.value.password) {
+  const ok = await verify(submission.value.password, thread.password);
+  if (!ok) {
     return submission.reply({
       fieldErrors: {
         password: ["削除用パスワードが一致しません"],
@@ -36,7 +38,6 @@ export async function deleteThread(_: unknown, formData: FormData) {
   await prisma.thread.delete({
     where: {
       id: submission.value.id,
-      password: submission.value.password,
     },
   });
 

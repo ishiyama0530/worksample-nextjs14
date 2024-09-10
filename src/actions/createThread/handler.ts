@@ -1,6 +1,7 @@
 "use server";
 
 import { createThreadSchema } from "@/actions/createThread/schema";
+import { hash } from "@/lib/hash";
 import { getIpAddress } from "@/lib/ip";
 import prisma from "@/lib/prisma";
 import { parseWithZod } from "@conform-to/zod";
@@ -23,8 +24,8 @@ export async function createThread(_: unknown, formData: FormData) {
       id,
       title: submission.value.title,
       description: submission.value.description,
-      postKeyword: submission.value.postKeyword, // 暗号化
-      password: submission.value.password,
+      postKeyword: await hash(submission.value.postKeyword),
+      password: await hash(submission.value.password),
       posts: {
         create: {
           id: ulid().toLowerCase(),
