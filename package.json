@@ -16,6 +16,9 @@
     "check": "biome check --write ./src",
     "verify-all": "npm run type && npm run check"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@conform-to/react": "^1.1.5",
     "@conform-to/zod": "^1.1.5",

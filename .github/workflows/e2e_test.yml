@@ -1,0 +1,45 @@
+name: e2e_test
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    #9:00 (JST)
+    - cron: "0 0 * * *"
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+
+    - name: Cache node modules
+      uses: actions/cache@v4
+      id: cache_dependency
+      env:
+        cache-name: cache-dependency
+      with:
+        path: "node_modules"
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+
+    - name: Install dependencies
+      if: ${{ steps.cache_dependency.outputs.cache-hit != 'true' }}
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: npm run e2e
+
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 10
