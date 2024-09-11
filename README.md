@@ -44,7 +44,7 @@ Route (app)                              Size     First Load JS
 
 ## ディレクトリ構成
 
-今回はフロントエンド、バックエンドを1つで管理している小さなアプリケーションにしています。  
+フロントエンド、バックエンドを1つで管理している小さなアプリケーションです。  
 
 ```sh
 .
@@ -310,6 +310,7 @@ src/app/(application)
 └── presentation.tsx # Presentation層
 ```
 
+Container/Presentationalパターンはこちらから  
 [Next.jsの考え方 | Container/Presentationalパターン](https://zenn.dev/akfm/books/nextjs-basic-principle/viewer/part_2_container_presentational_pattern)
 
 ```tsx
@@ -367,10 +368,9 @@ Jestとreact-testing-libraryを使用したフロントエンドテストとPlay
 ```
 
 react-testing-libraryはReact Server Componentに対応していません。  
-そのため、page.tsx（Container層）データ取得などのRSCならではの処理を行い、presentation.tsxではなるべく純粋なReactコンポーネントとして実装するようにしています。  
-また、その配下のコンポーネントでConformを使用しているコンポーネントではreact-testing-libraryがエラーになってしまったので、そのコンポーネントだけモックにして対応しています。（これは想定できていませんでした🥲）
+そのため、page.tsx（Container層）ではデータ取得などRSCならではの処理を行い、presentation.tsxではなるべく純粋なReactコンポーネントとして実装をしています。  
 
-[※Container/Presentationalパターンはこちら](https://zenn.dev/akfm/books/nextjs-basic-principle/viewer/part_2_container_presentational_pattern)
+また、presentation.tsxの子コンポーネントでConformを使用しているコンポーネントがあるとreact-testing-libraryがエラーになってしまったので、そのコンポーネントだけモックにして対応しています。（これは想定できていませんでした🥲）
 
 ```ts
 // tests/frontend/app/(application)/threads/presentation.test.tsx
