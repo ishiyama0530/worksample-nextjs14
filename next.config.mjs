@@ -40,21 +40,14 @@ const nextConfig = {
             value: "off",
           },
           {
-            key: "X-Download-Options",
-            value: "noopen",
-          },
-          {
             key: "X-Frame-Options",
             value: "SAMEORIGIN",
           },
-          {
-            key: "X-Permitted-Cross-Domain-Policies",
-            value: "none",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "0",
-          },
+          // see: https://www.secure-iv.co.jp/techblog/7498
+          // {
+          //   key: "X-XSS-Protection",
+          //   value: "0",
+          // },
           {
             key: "Permissions-Policy",
             value:
