@@ -418,7 +418,6 @@ function setCspResponseHeader(response: NextResponse) {
 Vercelのものを使用しました。
 
 ```tsx
-
 // src/app/layout.tsx
 
 // imports..
