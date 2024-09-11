@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     },
     images: [{ url: "/og-image.png" }],
   },
-  icons: [{ rel: "icon", url: "/favicon.svg" }],
 };
 
 export default function RootLayout({
