@@ -8,8 +8,7 @@ const getThreads = unstable_cache(
   { revalidate: 3600, tags: ["get-threads"] },
 );
 
-const origin = "https://worksample-nextjs14.vercel.app";
-const concatUrl = (url: string) => `${origin}/${url}`;
+const concatUrl = (url: string) => `${process.env.ORIGIN_URL}/${url}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // データベースやAPIからページのデータを取得
@@ -28,6 +27,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
     },
     {
+      url: concatUrl("threads"),
+      lastModified: now,
+    },
+    {
       url: concatUrl("about"),
       lastModified: now,
     },
@@ -36,7 +39,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
     },
     {
-      url: concatUrl("threads"),
+      url: concatUrl("terms"),
+      lastModified: now,
+    },
+    {
+      url: concatUrl("privacy"),
       lastModified: now,
     },
     ...threadUrls,
