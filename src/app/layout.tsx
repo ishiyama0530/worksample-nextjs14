@@ -26,7 +26,6 @@ export const metadata: Metadata = {
       template: "%s - Anon Board",
       default: "Anon Board",
     },
-    images: [{ url: "/og-image.png" }],
   },
 };
 
