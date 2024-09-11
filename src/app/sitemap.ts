@@ -8,7 +8,7 @@ const getThreads = unstable_cache(
   { revalidate: 3600, tags: ["get-threads"] },
 );
 
-const concatUrl = (url: string) => `${process.env.ORIGIN_URL}/${url}`;
+const concatUrl = (url: string) => `${process.env.ORIGIN_URL}${url}`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // データベースやAPIからページのデータを取得
@@ -23,27 +23,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: origin,
+      url: process.env.ORIGIN_URL ?? "http://localhost:3000/",
       lastModified: now,
     },
     {
-      url: concatUrl("threads"),
+      url: concatUrl("/threads"),
       lastModified: now,
     },
     {
-      url: concatUrl("about"),
+      url: concatUrl("/about"),
       lastModified: now,
     },
     {
-      url: concatUrl("contact"),
+      url: concatUrl("/contact"),
       lastModified: now,
     },
     {
-      url: concatUrl("terms"),
+      url: concatUrl("/terms"),
       lastModified: now,
     },
     {
-      url: concatUrl("privacy"),
+      url: concatUrl("/privacy"),
       lastModified: now,
     },
     ...threadUrls,
