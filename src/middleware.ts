@@ -14,9 +14,7 @@ function setCspResponseHeader(response: NextResponse) {
     default-src 'self';
     script-src 'self' https: 'unsafe-inline' 'unsafe-eval';
     style-src 'self' https: 'unsafe-inline';
-  `
-    .replace(/\s{2,}/g, " ")
-    .trim();
+  `;
 
   response.headers.set("Content-Security-Policy", cspHeader);
 }
